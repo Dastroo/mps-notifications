@@ -15,7 +15,6 @@
 
 #include "../include/Firebase.h"
 
-//  TODO: change every mention of "module" to "service"
 Firebase::Firebase() {
     //  READ SERVER KEY FROM JSON FILE
     Json::Value value;
@@ -23,14 +22,6 @@ Firebase::Firebase() {
     Json::Reader().parse(ifstream, value, false);
     server_key = value["server_key"].asString();
     Log::i(TAG, "server_key: " + server_key);
-}
-
-std::vector<std::string> Firebase::get_modules() {
-    auto query = db_helper.select(table_modules, col_module);
-    std::vector<std::string> modules;
-    while (query->executeStep())
-        modules.emplace_back(query->getColumn(col_module.c_str()).getString());
-    return modules;
 }
 
 std::string    //  TODO: consider changing to bool return type

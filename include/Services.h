@@ -7,7 +7,6 @@
 
 #include <db_helper/DBHelper.h>
 
-//TODO: disconnect all services on shutdown
 class Services {
     DBHelper db_helper;
 
